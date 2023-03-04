@@ -358,4 +358,5 @@ def start():
 
 if __name__ == "__main__":
     prepare_environment()
-    start()
+    if '--prepare_env_only' not in sys.argv:
+        start()
