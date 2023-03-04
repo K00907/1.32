@@ -63,7 +63,7 @@
     "training_tensorboard_save_images": false,
     "training_tensorboard_flush_every": 120,
     "sd_model_checkpoint": "chilloutmix-inpainting.safetensors.inpainting.ckpt [9206311350]",
-    "sd_checkpoint_cache": 0,
+    "sd_checkpoint_cache": 2,
     "sd_vae_checkpoint_cache": 0,
     "sd_vae": "Automatic",
     "sd_vae_as_default": true,
