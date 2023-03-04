@@ -110,11 +110,17 @@ def initialize():
     try:
         modules.sd_models.load_model()
     except Exception as e:
-        errors.display(e, "loading stable diffusion model")
-        print("", file=sys.stderr)
-        print("Stable diffusion model failed to load, exiting", file=sys.stderr)
-        exit(1)
+        print("Stable diffusion model failed to load")
+        if cmd_opts.prepare_env_only:  # ignore the error, initialize as many as we can
+            print("continue load more models")
+        else:
+            print("", file=sys.stderr)
+            errors.display(e, "loading stable diffusion model")
+            print("exit", file=sys.stderr)
+            exit(1)
 
+    if cmd_opts.prepare_env_only:
+        exit(0)
     shared.opts.data["sd_model_checkpoint"] = shared.sd_model.sd_checkpoint_info.title
 
     shared.opts.onchange("sd_model_checkpoint", wrap_queued_call(lambda: modules.sd_models.reload_model_weights()))
@@ -151,6 +157,9 @@ def initialize():
         os._exit(0)
 
     signal.signal(signal.SIGINT, sigint_handler)
+
+    if cmd_opts.prepare_env_only:
+        exit(0)
 
 
 def setup_cors(app):

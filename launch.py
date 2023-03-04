@@ -7,7 +7,6 @@ import shlex
 import platform
 import argparse
 import json
-
 dir_repos = "repositories"
 dir_extensions = "extensions"
 python = sys.executable
@@ -358,5 +357,4 @@ def start():
 
 if __name__ == "__main__":
     prepare_environment()
-    if '--prepare_env_only' not in sys.argv:
-        start()
+    start()
