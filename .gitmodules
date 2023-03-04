@@ -1,0 +1,3 @@
+[submodule "extensions/ddetailer"]
+	path = extensions/ddetailer
+	url = https://github.com/dsxailab/ddetailer.git
