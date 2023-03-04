@@ -17,6 +17,8 @@ import gradio.routes
 import gradio.utils
 import numpy as np
 from PIL import Image, PngImagePlugin
+from gradio.processing_utils import decode_base64_to_image
+
 from modules.call_queue import wrap_gradio_gpu_call, wrap_queued_call, wrap_gradio_call
 
 from modules import sd_hijack, sd_models, localization, script_callbacks, ui_extensions, deepbooru, sd_vae, extra_networks, postprocessing, ui_components, ui_common, ui_postprocessing
@@ -445,6 +447,10 @@ def create_override_settings_dropdown(tabname, row):
 
     return dropdown
 
+def on_image_uploaded(image_data, old_height):
+    image: Image = decode_base64_to_image(image_data["image"])
+    ratio = int(old_height) / int(image.height)
+    return [int(image.width * ratio), old_height]
 
 def create_ui():
     import modules.img2img
@@ -756,7 +762,8 @@ def create_ui():
                             with gr.Column(elem_id="img2img_column_size", scale=4):
                                 width = gr.Slider(minimum=64, maximum=2048, step=8, label="Width", value=512, elem_id="img2img_width")
                                 height = gr.Slider(minimum=64, maximum=2048, step=8, label="Height", value=512, elem_id="img2img_height")
-
+                                init_img_with_mask.upload(on_image_uploaded, inputs=[init_img_with_mask, height],
+                                                          outputs=[width, height], preprocess=False)
                             res_switch_btn = ToolButton(value=switch_values_symbol, elem_id="img2img_res_switch_btn")
                             if opts.dimensions_and_batch_together:
                                 with gr.Column(elem_id="img2img_column_batch"):
