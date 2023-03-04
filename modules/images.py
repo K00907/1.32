@@ -236,6 +236,11 @@ def draw_prompt_matrix(im, width, height, all_prompts, margin=0):
     return draw_grid_annotations(im, width, height, hor_texts, ver_texts, margin)
 
 
+def width_4_proportional_resize(img: Image, to_height: int) -> int:
+    src_ratio = img.width / img.height
+    width = int(to_height * src_ratio)
+    return width
+
 def resize_image(resize_mode, im, width, height, upscaler_name=None):
     """
     Resizes an image with the specified resize_mode, width, and height.
@@ -245,6 +250,7 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
             0: Resize the image to the specified width and height.
             1: Resize the image to fill the specified width and height, maintaining the aspect ratio, and then center the image within the dimensions, cropping the excess.
             2: Resize the image to fit within the specified width and height, maintaining the aspect ratio, and then center the image within the dimensions, filling empty with data from image.
+            4: Proportional resize the image to the height with aspect ratio kept and width automatically calculated
         im: The image to resize.
         width: The width to resize the image to.
         height: The height to resize the image to.
@@ -275,8 +281,8 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
         res = resize(im, width, height)
 
     elif resize_mode == 1:
-        ratio = width / height
         src_ratio = im.width / im.height
+        ratio = width / height
 
         src_w = width if ratio > src_ratio else im.width * height // im.height
         src_h = height if ratio <= src_ratio else im.height * width // im.width
@@ -284,10 +290,12 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
         resized = resize(im, src_w, src_h)
         res = Image.new("RGB", (width, height))
         res.paste(resized, box=(width // 2 - src_w // 2, height // 2 - src_h // 2))
-
+    elif resize_mode == 4:
+        width = width_4_proportional_resize(im, height)
+        res = resize(im, width, height)
     else:
-        ratio = width / height
         src_ratio = im.width / im.height
+        ratio = width / height
 
         src_w = width if ratio < src_ratio else im.width * height // im.height
         src_h = height if ratio >= src_ratio else im.height * width // im.width

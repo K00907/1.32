@@ -955,6 +955,7 @@ class StableDiffusionProcessingImg2Img(StableDiffusionProcessing):
                 self.paste_to = (x1, y1, x2-x1, y2-y1)
             else:
                 image_mask = images.resize_image(self.resize_mode, image_mask, self.width, self.height)
+                self.width = image_mask.width
                 np_mask = np.array(image_mask)
                 np_mask = np.clip((np_mask.astype(np.float32)) * 2, 0, 255).astype(np.uint8)
                 self.mask_for_overlay = Image.fromarray(np_mask)
@@ -972,6 +973,14 @@ class StableDiffusionProcessingImg2Img(StableDiffusionProcessing):
 
             if crop_region is None and self.resize_mode != 3:
                 image = images.resize_image(self.resize_mode, image, self.width, self.height)
+                # Given an image of 512*768, when we resize it proportional to height of 512
+                # the expected width is 341, however at this stage the processed image might be different, i.e.336
+                # the above resize won't actually resize the image in proportional mode
+                # because the height is already 512, and proportional resize will keep the image's original ratio
+                # which is 336*512, as a result the above image won't match the mask size which is 341*512
+                # so here we resize the image again using a different mode
+                if image.size != (self.width, self.height):
+                    image = images.resize_image(0, image, self.width, self.height)
 
             if image_mask is not None:
                 image_masked = Image.new('RGBa', (image.width, image.height))

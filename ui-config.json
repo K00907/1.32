@@ -151,7 +151,7 @@
     "img2img/Inpaint batch mask directory (required for inpaint batch processing only)/visible": true,
     "img2img/Inpaint batch mask directory (required for inpaint batch processing only)/value": "",
     "img2img/Resize mode/visible": true,
-    "img2img/Resize mode/value": "Just resize",
+    "img2img/Resize mode/value": "Proportional to height (keep ratio)",
     "img2img/Mask blur/visible": true,
     "img2img/Mask blur/value": 4,
     "img2img/Mask blur/minimum": 0,
@@ -791,7 +791,7 @@
     "customscript/postprocessing_watermarker.py/extras/Enable Watermark/visible": true,
     "customscript/postprocessing_watermarker.py/extras/Enable Watermark/value": true,
     "customscript/postprocessing_watermarker.py/extras/Transparency/visible": true,
-    "customscript/postprocessing_watermarker.py/extras/Transparency/value": 35,
+    "customscript/postprocessing_watermarker.py/extras/Transparency/value": 25,
     "customscript/postprocessing_watermarker.py/extras/Transparency/minimum": 0,
     "customscript/postprocessing_watermarker.py/extras/Transparency/maximum": 255,
     "customscript/postprocessing_watermarker.py/extras/Transparency/step": 1
