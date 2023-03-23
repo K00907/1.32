@@ -1447,5 +1447,7 @@
     "customscript/simple_dd_mask.py/img2img/Body confidence threshold %/visible": true,
     "customscript/simple_dd_mask.py/img2img/Body dilation factor/visible": true,
     "customscript/simple_dd_mask.py/img2img/Enabled/visible": true,
-    "customscript/simple_dd_mask.py/img2img/Enabled/value": true
+    "customscript/simple_dd_mask.py/img2img/Enabled/value": true,
+    "customscript/simple_dd_mask.py/img2img/Mask type/visible": true,
+    "customscript/simple_dd_mask.py/img2img/Mask type/value": "cloth"
 }
