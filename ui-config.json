@@ -189,7 +189,7 @@
     "img2img/Width/maximum": 2048,
     "img2img/Width/step": 8,
     "img2img/Height/visible": true,
-    "img2img/Height/value": 512,
+    "img2img/Height/value": 960,
     "img2img/Height/minimum": 64,
     "img2img/Height/maximum": 2048,
     "img2img/Height/step": 8,
