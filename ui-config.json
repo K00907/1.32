@@ -1449,5 +1449,10 @@
     "customscript/simple_dd_mask.py/img2img/Enabled/visible": true,
     "customscript/simple_dd_mask.py/img2img/Enabled/value": true,
     "customscript/simple_dd_mask.py/img2img/Mask type/visible": true,
-    "customscript/simple_dd_mask.py/img2img/Mask type/value": "cloth"
+    "customscript/simple_dd_mask.py/img2img/Mask type/value": "cloth",
+    "customscript/simple_dd_mask.py/img2img/Mask blur/visible": true,
+    "customscript/simple_dd_mask.py/img2img/Mask blur/value": 10,
+    "customscript/simple_dd_mask.py/img2img/Mask blur/minimum": 0,
+    "customscript/simple_dd_mask.py/img2img/Mask blur/maximum": 255,
+    "customscript/simple_dd_mask.py/img2img/Mask blur/step": 1
 }
