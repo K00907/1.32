@@ -240,7 +240,7 @@
     "img2img/Resize seed from height/step": 8,
     "img2img/Override settings/value": null,
     "img2img/Script/visible": true,
-    "img2img/Script/value": "automask",
+    "img2img/Script/value": "Simple dd mask",
     "customscript/img2imgalt.py/img2img/Override `Sampling method` to Euler?(this method is built for it)/visible": true,
     "customscript/img2imgalt.py/img2img/Override `Sampling method` to Euler?(this method is built for it)/value": true,
     "customscript/img2imgalt.py/img2img/Override `prompt` to the same value as `original prompt`?(and `negative prompt`)/visible": true,
