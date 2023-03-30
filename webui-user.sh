@@ -45,5 +45,7 @@
 
 ###########################################
 
+export LD_PRELOAD=libtcmalloc.so
+
 git config --global --add safe.directory '*'
 
