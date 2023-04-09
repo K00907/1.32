@@ -1466,5 +1466,10 @@
     "customscript/sd_webui_segc.py/img2img/Mask blur/value": 10,
     "customscript/sd_webui_segc.py/img2img/Mask blur/minimum": 0,
     "customscript/sd_webui_segc.py/img2img/Mask blur/maximum": 255,
-    "customscript/sd_webui_segc.py/img2img/Mask blur/step": 1
+    "customscript/sd_webui_segc.py/img2img/Mask blur/step": 1,
+    "customscript/simple_dd_mask.py/img2img/dilation factor/visible": true,
+    "customscript/simple_dd_mask.py/img2img/dilation factor/value": 30,
+    "customscript/simple_dd_mask.py/img2img/dilation factor/minimum": 0,
+    "customscript/simple_dd_mask.py/img2img/dilation factor/maximum": 255,
+    "customscript/simple_dd_mask.py/img2img/dilation factor/step": 1
 }
