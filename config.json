@@ -142,7 +142,6 @@
     "SWIN_tile_overlap": 8,
     "sd_lora": "None",
     "lora_apply_to_outputs": false,
-    "hidden_tabs": "",
     "dd_save_previews": false,
     "outdir_ddetailer_previews": "extensions/ddetailer/outputs/masks-previews",
     "dd_save_masks": false,
